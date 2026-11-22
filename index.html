@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الإلكترونيات ببساطة — إبداع | أبو يوسف للإلكترونيات — المنيا والمنيا الجديدة</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Cairo", "system-ui", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          },
+          colors: {
+            lab: {
+              950: "#060b14",
+              900: "#0b1322",
+              850: "#101b2f",
+              800: "#17253e"
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Cairo", system-ui, -apple-system, sans-serif;
+      background-color: #060b14;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    .ltr-num {
+      direction: ltr;
+      unicode-bidi: isolate;
+      font-family: "JetBrains Mono", monospace;
+    }
+    .lab-grid {
+      background-image:
+        linear-gradient(to right, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-lab-950 text-slate-100 antialiased selection:bg-cyan-400 selection:text-slate-950">
+
+  <!-- 1. الشريط العلوي للتنقل السريع -->
+  <header class="sticky top-0 z-40 border-b border-slate-800/90 bg-lab-950/95 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <!-- العلامة التجارية -->
+      <a href="#top" class="flex items-center gap-3">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/35 bg-gradient-to-br from-cyan-500/20 to-amber-500/15 text-cyan-300 shadow-lg shadow-cyan-950/40">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+            <rect x="7" y="7" width="10" height="10" rx="2" />
+            <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke-linecap="round" />
+            <circle cx="12" cy="12" r="1.8" fill="currentColor" />
+          </svg>
+        </div>
+        <div>
+          <div class="text-sm font-black tracking-tight text-white sm:text-base">
+            الإلكترونيات ببساطة <span class="text-amber-400">— إبداع</span>
+          </div>
+          <div class="text-[11px] font-semibold text-slate-400">
+            أبو يوسف للإلكترونيات • المنيا والمنيا الجديدة
+          </div>
+        </div>
+      </a>
+
+      <!-- روابط سطح المكتب -->
+      <nav class="hidden items-center gap-1 xl:flex" aria-label="التنقل السريع">
+        <a href="#fundamentals" class="rounded-lg px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:bg-lab-850 hover:text-cyan-300">المفاهيم</a>
+        <a href="#components" class="rounded-lg px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:bg-lab-850 hover:text-cyan-300">المكونات</a>
+        <a href="#diagnostics" class="rounded-lg px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:bg-lab-850 hover:text-cyan-300">الأعطال</a>
+        <a href="#calculators" class="rounded-lg px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:bg-lab-850 hover:text-cyan-300">الحاسبات</a>
+        <a href="#ibdaa" class="rounded-lg px-2.5 py-2 text-xs font-extrabold text-amber-300 transition hover:bg-lab-850 hover:text-amber-200">إبداع</a>
+        <a href="#maintenance" class="rounded-lg px-2.5 py-2 text-xs font-bold text-emerald-300 transition hover:bg-lab-850 hover:text-emerald-200">صيانة وواتساب</a>
+      </nav>
+
+      <!-- زر مباشر طلب صيانة عطل + زر قائمة الجوال -->
+      <div class="flex items-center gap-2">
+        <button type="button" data-fault-preset="طلب صيانة عطل إلكتروني في ورشة إبداع (المنيا / المنيا الجديدة)" class="fault-trigger inline-flex items-center gap-1.5 rounded-xl bg-amber-400 px-3.5 py-2 text-xs font-black text-slate-950 shadow-md shadow-amber-950/30 transition hover:bg-amber-300">
+          <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" aria-hidden="true">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>طلب صيانة عطل</span>
+        </button>
+
+        <button id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobileNavMenu" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-lab-850 text-slate-200 transition hover:border-cyan-400 xl:hidden">
+          <svg id="menuIconOpen" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+          </svg>
+          <svg id="menuIconClose" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- قائمة الجوال والتابلت المنسدلة -->
+    <div id="mobileNavMenu" class="hidden border-t border-slate-800 bg-lab-950 px-4 py-4 xl:hidden">
+      <nav class="flex flex-col space-y-1.5" aria-label="قائمة الجوال">
+        <a href="#fundamentals" class="mobile-link rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-200 hover:bg-lab-850 hover:text-cyan-300">المفاهيم</a>
+        <a href="#components" class="mobile-link rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-200 hover:bg-lab-850 hover:text-cyan-300">المكونات</a>
+        <a href="#diagnostics" class="mobile-link rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-200 hover:bg-lab-850 hover:text-cyan-300">الأعطال</a>
+        <a href="#calculators" class="mobile-link rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-200 hover:bg-lab-850 hover:text-cyan-300">الحاسبات</a>
+        <a href="#ibdaa" class="mobile-link rounded-xl px-3.5 py-2.5 text-sm font-extrabold text-amber-300 hover:bg-lab-850 hover:text-amber-200">إبداع</a>
+        <a href="#maintenance" class="mobile-link rounded-xl px-3.5 py-2.5 text-sm font-bold text-emerald-300 hover:bg-lab-850 hover:text-emerald-200">صيانة وواتساب</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="pb-24 sm:pb-12">
+
+    <!-- 2. القسم الافتتاحي -->
+    <section class="lab-grid relative overflow-hidden border-b border-slate-800/80 py-12 sm:py-16 lg:py-20">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="space-y-6 lg:col-span-7">
+          <div class="inline-flex flex-wrap items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold text-cyan-300">
+            <span class="h-2 w-2 rounded-full bg-cyan-400"></span>
+            <span>تبسيط علم الإلكترونيات + خدمات وابتكارات «إبداع»</span>
+            <span class="text-amber-300">• المنيا والمنيا الجديدة</span>
+          </div>
+
+          <h1 class="text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl">
+            الإلكترونيات ببساطة <span class="text-cyan-400">وعملياً</span> مع ورشة <span class="text-amber-400">إبداع</span>
+          </h1>
+
+          <p class="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base lg:text-lg">
+            منصة عربية متكاملة تجمع بين تبسيط المفاهيم والمكونات والحاسبات الهندسية الفورية، وبين الخبرة العملية لـ <strong class="font-bold text-white">أبو يوسف للإلكترونيات</strong> في <strong class="font-bold text-amber-300">محافظة المنيا والمنيا الجديدة</strong> لصيانة الكروت والأجهزة، وبرمجة الفلاشات والذاكرة، وتصميم الدوائر والأدوات المبتكرة.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <button type="button" data-fault-preset="طلب صيانة عطل إلكتروني — المنيا / المنيا الجديدة" class="fault-trigger inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3 text-sm font-black text-slate-950 shadow-lg shadow-amber-500/20 transition hover:bg-amber-300">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>طلب صيانة عطل</span>
+            </button>
+
+            <a href="#" data-wa-message="مرحباً أبو يوسف، أرغب في التواصل عبر واتساب بخصوص صيانة أو دائرة إلكترونية في المنيا أو المنيا الجديدة." class="wa-direct-btn inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-black text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2c-5.52 0-10 4.44-10 9.92 0 1.75.46 3.46 1.33 4.97L2 22l5.25-1.36a10.05 10.05 0 0 0 4.79 1.22h.01c5.52 0 10-4.44 10-9.92 0-2.65-1.04-5.14-2.93-7.01A9.93 9.93 0 0 0 12.04 2Zm5.84 14.07c-.24.68-1.41 1.3-1.94 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.24-4.79-4.13-4.94-4.32-.15-.19-1.18-1.56-1.18-2.98 0-1.42.75-2.12 1.02-2.41.27-.29.59-.36.79-.36.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.24 1.63 2.01 1.12.99 2.06 1.3 2.35 1.44.29.15.46.12.63-.07.17-.19.72-.83.91-1.12.19-.29.39-.24.65-.14.27.1 1.69.79 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z" />
+              </svg>
+              <span>تواصل واتساب</span>
+            </a>
+
+            <a href="#calculators" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-lab-850 px-5 py-3 text-sm font-extrabold text-cyan-300 transition hover:border-cyan-400/60 hover:bg-lab-800">
+              <span>الحاسبات الفورية</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-3">
+            <div class="rounded-2xl border border-slate-800 bg-lab-900/90 p-3.5">
+              <div class="text-xs font-bold text-cyan-300">4 حاسبات تفاعلية</div>
+              <div class="mt-0.5 text-xs text-slate-400">أوم والقدرة، مقسم الجهد، RC، ومقاومة الليد E12/E24</div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-lab-900/90 p-3.5">
+              <div class="text-xs font-bold text-amber-300">صيانة وبرمجة شاملة</div>
+              <div class="mt-0.5 text-xs text-slate-400">غسالات، إنفرتر، DVR هيكفيجن، فلاش وEEPROM، سوفتوير</div>
+            </div>
+            <div class="rounded-2xl border border-slate-800 bg-lab-900/90 p-3.5">
+              <div class="text-xs font-bold text-emerald-300">ابتكارات ودوائر عملية</div>
+              <div class="mt-0.5 text-xs text-slate-400">ضبط دش محمول بعرض كمبيوتر وأندرويد، ليثيوم وحماية</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- بطاقة تعريفية لورشة إبداع -->
+        <div class="lg:col-span-5">
+          <div class="rounded-3xl border border-slate-800 bg-gradient-to-b from-lab-900 to-lab-950 p-6 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div>
+                <div class="text-xs font-bold text-cyan-300">IBDAA LAB • MINYA</div>
+                <div class="mt-0.5 text-lg font-extrabold text-white">ورشة وابتكارات إبداع</div>
+              </div>
+              <span class="rounded-lg bg-emerald-500/15 px-3 py-1 text-xs font-extrabold text-emerald-300">المنيا والمنيا الجديدة</span>
+            </div>
+
+            <div class="mt-4 space-y-3 text-xs leading-relaxed text-slate-300">
+              <div class="rounded-xl border border-slate-800/90 bg-lab-950/80 p-3.5">
+                <div class="font-extrabold text-white">فهم عملي للمفاهيم والمكونات</div>
+                <p class="mt-1 text-slate-400">الربط بين الجهد والتيار والمقاومة والقدرة والاتصال الأرضي (<span class="ltr-num text-slate-200">GND</span>) ووظيفة كل عنصر في الدائرة.</p>
+              </div>
+              <div class="rounded-xl border border-slate-800/90 bg-lab-950/80 p-3.5">
+                <div class="font-extrabold text-amber-300">صيانة وبرمجة الأجهزة واللوحات</div>
+                <p class="mt-1 text-slate-400">كروت الغسالات، ماكينات اللحام الإنفرتر، كاميرات و<span class="ltr-num text-slate-200">DVR</span> هيكفيجن، الشاشات والرسيفرات، الهاردات، الفلاشات والذاكرة، وسوفتوير الهواتف.</p>
+              </div>
+              <div class="rounded-xl border border-slate-800/90 bg-lab-950/80 p-3.5">
+                <div class="font-extrabold text-cyan-300">ابتكار وتجهيز الدوائر والأدوات</div>
+                <p class="mt-1 text-slate-400">تصميم وتجميع أجهزة وأدوات مساعدة مثل ضبط طبق الدش المحمول ببطارية قابلة للشحن مع عرض الفيديو على الكمبيوتر وهاتف أندرويد.</p>
+              </div>
+            </div>
+
+            <div class="mt-5 flex flex-col gap-2.5 border-t border-slate-800 pt-4 sm:flex-row">
+              <button type="button" data-fault-preset="طلب فحص وتشخيص عطل في ورشة إبداع — المنيا / المنيا الجديدة" class="fault-trigger flex-1 rounded-xl bg-amber-400/15 px-4 py-2.5 text-xs font-extrabold text-amber-300 ring-1 ring-inset ring-amber-400/35 transition hover:bg-amber-400 hover:text-slate-950">
+                طلب صيانة عطل
+              </button>
+              <a href="#" data-wa-message="مرحباً أبو يوسف، أرغب في التواصل مع ورشة إبداع في المنيا أو المنيا الجديدة." class="wa-direct-btn flex-1 rounded-xl bg-emerald-500/15 px-4 py-2.5 text-center text-xs font-extrabold text-emerald-300 ring-1 ring-inset ring-emerald-400/35 transition hover:bg-emerald-500 hover:text-slate-950">
+                تواصل واتساب
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. قسم المفاهيم الأساسية الأربعة -->
+    <section id="fundamentals" class="border-b border-slate-800/80 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="text-xs font-extrabold tracking-wide text-cyan-400">CORE FUNDAMENTALS</span>
+          <h2 class="mt-1 text-2xl font-black text-white sm:text-3xl">المفاهيم الأربعة الأساسية والاتصال الأرضي</h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 sm:text-base">
+            فهم العلاقة بين الجهد والتيار والمقاومة والقدرة والاتصال الأرضي (<span class="ltr-num text-cyan-300">GND</span>) يسهل تتبع الإشارات وحساب الحرارة ومنع الأعطال.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- الجهد الكهربائي -->
+          <article class="rounded-2xl border border-slate-800 bg-lab-900/90 p-6 transition hover:border-cyan-400/40">
+            <div class="flex items-center justify-between">
+              <span class="rounded-lg bg-cyan-500/15 px-3 py-1 ltr-num text-sm font-bold text-cyan-300">V (Volt)</span>
+              <svg class="h-6 w-6 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold text-white">الجهد الكهربائي (V)</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">
+              فرق الجهد الدافع لحركة الشحنات بين نقطتين، ويُقاس بالفولت (<span class="ltr-num text-cyan-300">V</span>) بالتوازي مع العنصر المراد قياسه.
+            </p>
+            <div class="mt-4 rounded-xl bg-lab-950/90 px-3.5 py-2 text-xs font-semibold text-slate-400">
+              مثال: <span class="ltr-num text-slate-200">3.3V / 5V</span> للمنطق، و<span class="ltr-num text-slate-200">12V</span> للريليهات والكاميرات.
+            </div>
+          </article>
+
+          <!-- التيار الكهربائي -->
+          <article class="rounded-2xl border border-slate-800 bg-lab-900/90 p-6 transition hover:border-emerald-400/40">
+            <div class="flex items-center justify-between">
+              <span class="rounded-lg bg-emerald-500/15 px-3 py-1 ltr-num text-sm font-bold text-emerald-300">I (Ampere)</span>
+              <svg class="h-6 w-6 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold text-white">التيار الكهربائي (I)</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">
+              معدل سريان الشحنات في المسار المغلق، ويُقاس بالأمبير (<span class="ltr-num text-emerald-300">A</span>) أو الملي أمبير (<span class="ltr-num text-emerald-300">mA</span>) بالتوالي مع الحمل.
+            </p>
+            <div class="mt-4 rounded-xl bg-lab-950/90 px-3.5 py-2 text-xs font-semibold text-slate-400">
+              مثال: <span class="ltr-num text-slate-200">10mA–20mA</span> لليد، وعدة أمبيرات للأحمال والبطاريات.
+            </div>
+          </article>
+
+          <!-- المقاومة الكهربائية -->
+          <article class="rounded-2xl border border-slate-800 bg-lab-900/90 p-6 transition hover:border-amber-400/40">
+            <div class="flex items-center justify-between">
+              <span class="rounded-lg bg-amber-500/15 px-3 py-1 ltr-num text-sm font-bold text-amber-300">R (Ohm)</span>
+              <svg class="h-6 w-6 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M3 12h4l2-5 4 10 2-5h6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold text-white">المقاومة الكهربائية (R)</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">
+              ممانعة مرور التيار وتُقاس بالأوم (<span class="ltr-num text-amber-300">Ω</span>)، وتُستخدم لتحديد التيار أو تقسيم الجهود أو سحب الإشارات.
+            </p>
+            <div class="mt-4 rounded-xl bg-lab-950/90 px-3.5 py-2 text-xs font-semibold text-slate-400">
+              قانون أوم: <span class="ltr-num text-amber-200">V = I × R</span>.
+            </div>
+          </article>
+
+          <!-- القدرة والاتصال الأرضي -->
+          <article class="rounded-2xl border border-slate-800 bg-lab-900/90 p-6 transition hover:border-rose-400/40">
+            <div class="flex items-center justify-between">
+              <span class="rounded-lg bg-rose-500/15 px-3 py-1 ltr-num text-sm font-bold text-rose-300">P (W) · GND</span>
+              <svg class="h-6 w-6 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 3v11M6 14h12M9 17h6M11 20h2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold text-white">القدرة والاتصال الأرضي</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">
+              القدرة (<span class="ltr-num text-rose-300">P = V × I</span> بالوات) تحدد الحرارة المتولدة، والاتصال الأرضي (<span class="ltr-num text-cyan-300">GND</span>) يمثل النقطة المرجعية للجهود والعودة الآمنة.
+            </p>
+            <div class="mt-4 rounded-xl bg-lab-950/90 px-3.5 py-2 text-xs font-semibold text-slate-400">
+              قاعدة: توحيد <span class="ltr-num text-slate-200">GND</span> ضروري لقياس وتبادل الإشارات بدقة.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. قسم موسوعة المكونات والوحدات العملية -->
+    <section id="components" class="border-b border-slate-800/80 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+          <div>
+            <span class="text-xs font-extrabold tracking-wide text-cyan-400">COMPONENTS &amp; MODULES</span>
+            <h2 class="mt-1 text-2xl font-black text-white sm:text-3xl">موسوعة المكونات والوحدات العملية</h2>
+            <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
+              اختر التصنيف لاستعراض المكونات والوحدات التي نتعامل معها في الدوائر واللوحات والبطاريات.
+            </p>
+          </div>
+
+          <div id="componentFilterBar" class="flex flex-wrap gap-2" role="tablist" aria-label="تصفية المكونات">
+            <button type="button" data-comp-filter="all" class="comp-filter-btn rounded-xl bg-cyan-500 px-3.5 py-2 text-xs font-extrabold text-slate-950 transition">الكل</button>
+            <button type="button" data-comp-filter="basic" class="comp-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-cyan-400/50 hover:text-white">أساسية</button>
+            <button type="button" data-comp-filter="power" class="comp-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-cyan-400/50 hover:text-white">قدرة وحماية</button>
+            <button type="button" data-comp-filter="control" class="comp-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-cyan-400/50 hover:text-white">تحكم وقياس</button>
+            <button type="button" data-comp-filter="ready" class="comp-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-cyan-400/50 hover:text-white">وحدات جاهزة</button>
+          </div>
+        </div>
+
+        <div id="componentsGrid" class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- 5. قسم مسارات تشخيص الأعطال العملية في الورشة -->
+    <section id="diagnostics" class="border-b border-slate-800/80 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="text-xs font-extrabold tracking-wide text-amber-400">PRACTICAL DIAGNOSTICS</span>
+          <h2 class="mt-1 text-2xl font-black text-white sm:text-3xl">مسارات تشخيص الأعطال العملية في الورشة</h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 sm:text-base">
+            خطوات عملية للفحص والتشخيص قبل استبدال القطع، مع زر سريع لفتح نموذج بلاغ العطل بالبيانات المختارة.
+          </p>
+        </div>
+
+        <div id="diagnosticsGrid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- 6. قسم الحاسبات الإلكترونية الأربع الفورية -->
+    <section id="calculators" class="border-b border-slate-800/80 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="text-xs font-extrabold tracking-wide text-cyan-400">INSTANT CALCULATORS</span>
+          <h2 class="mt-1 text-2xl font-black text-white sm:text-3xl">الحاسبات الإلكترونية الأربع الفورية</h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 sm:text-base">
+            احسب قانون أوم والقدرة، ومقسم الجهد، وثابت الزمن <span class="ltr-num text-cyan-300">RC</span> وتردد القطع، ومقاومة الليد مع القيم القياسية <span class="ltr-num text-cyan-300">E12/E24</span> فوراً.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <!-- حاسبة 1: قانون أوم والقدرة الكهربائية -->
+          <div class="rounded-2xl border border-slate-800 bg-lab-900/95 p-6 shadow-lg">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3.5">
+              <div>
+                <h3 class="text-lg font-extrabold text-white">1. حاسبة قانون أوم والقدرة الكهربائية</h3>
+                <p class="text-xs text-slate-400">حساب الجهد (<span class="ltr-num">V</span>) والتيار (<span class="ltr-num">I</span>) والمقاومة (<span class="ltr-num">R</span>) والقدرة (<span class="ltr-num">P</span>)</p>
+              </div>
+              <span class="rounded-lg bg-cyan-500/15 px-2.5 py-1 ltr-num text-xs font-bold text-cyan-300">V · I · R · P</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div>
+                <label for="ohmV" class="mb-1 block text-xs font-bold text-slate-300">الجهد V (فولت)</label>
+                <input id="ohmV" type="number" step="any" value="12" class="ohm-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="ohmI" class="mb-1 block text-xs font-bold text-slate-300">التيار I (مللي أمبير mA)</label>
+                <input id="ohmI" type="number" step="any" value="100" class="ohm-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="ohmR" class="mb-1 block text-xs font-bold text-slate-300">المقاومة R (أوم Ω)</label>
+                <input id="ohmR" type="number" step="any" placeholder="تُحسب تلقائياً" class="ohm-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" data-ohm-mode="calcR" class="ohm-mode-btn rounded-lg bg-cyan-500/20 px-2.5 py-1 text-xs font-bold text-cyan-300 hover:bg-cyan-500 hover:text-slate-950">احسب R</button>
+                <button type="button" data-ohm-mode="calcI" class="ohm-mode-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">احسب I</button>
+                <button type="button" data-ohm-mode="calcV" class="ohm-mode-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">احسب V</button>
+              </div>
+              <button type="button" id="ohmResetBtn" class="text-xs font-bold text-slate-400 hover:text-white">إعادة ضبط</button>
+            </div>
+
+            <div id="ohmResult" class="mt-4 rounded-xl border border-slate-800 bg-lab-950/90 p-4 text-xs leading-relaxed text-slate-200 sm:text-sm"></div>
+          </div>
+
+          <!-- حاسبة 2: مقسم الجهد -->
+          <div class="rounded-2xl border border-slate-800 bg-lab-900/95 p-6 shadow-lg">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3.5">
+              <div>
+                <h3 class="text-lg font-extrabold text-white">2. حاسبة مقسم الجهد (Voltage Divider)</h3>
+                <p class="text-xs text-slate-400">حساب جهد الخرج <span class="ltr-num text-cyan-300">Vout = Vin × R2 / (R1 + R2)</span></p>
+              </div>
+              <span class="rounded-lg bg-emerald-500/15 px-2.5 py-1 ltr-num text-xs font-bold text-emerald-300">Vout</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div>
+                <label for="divVin" class="mb-1 block text-xs font-bold text-slate-300">جهد الدخل Vin (فولت)</label>
+                <input id="divVin" type="number" step="any" value="12" class="div-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="divR1" class="mb-1 block text-xs font-bold text-slate-300">المقاومة العلوية R1 (أوم)</label>
+                <input id="divR1" type="number" step="any" value="10000" class="div-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="divR2" class="mb-1 block text-xs font-bold text-slate-300">المقاومة السفلية R2 (أوم)</label>
+                <input id="divR2" type="number" step="any" value="10000" class="div-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <button type="button" data-div-preset="12,10000,10000" class="div-preset-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">نصف الجهد (10k / 10k)</button>
+              <button type="button" data-div-preset="5,1000,2000" class="div-preset-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">من 5V إلى ~3.33V</button>
+              <button type="button" data-div-preset="12,20000,10000" class="div-preset-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">12V إلى 4V</button>
+            </div>
+
+            <div id="divResult" class="mt-4 rounded-xl border border-slate-800 bg-lab-950/90 p-4 text-xs leading-relaxed text-slate-200 sm:text-sm"></div>
+          </div>
+
+          <!-- حاسبة 3: ثابت الزمن RC وتردد القطع -->
+          <div class="rounded-2xl border border-slate-800 bg-lab-900/95 p-6 shadow-lg">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3.5">
+              <div>
+                <h3 class="text-lg font-extrabold text-white">3. حاسبة ثابت الزمن RC وتردد القطع</h3>
+                <p class="text-xs text-slate-400">ثابت الزمن <span class="ltr-num text-cyan-300">τ = R × C</span> وتردد القطع <span class="ltr-num text-cyan-300">fc = 1 / (2πRC)</span></p>
+              </div>
+              <span class="rounded-lg bg-amber-500/15 px-2.5 py-1 ltr-num text-xs font-bold text-amber-300">τ &amp; fc</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label for="rcR" class="mb-1 block text-xs font-bold text-slate-300">المقاومة R (أوم Ω)</label>
+                <input id="rcR" type="number" step="any" value="10000" class="rc-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="rcC" class="mb-1 block text-xs font-bold text-slate-300">السعة C (ميكروفاراد µF)</label>
+                <input id="rcC" type="number" step="any" value="10" class="rc-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <button type="button" data-rc-preset="10000,10" class="rc-preset-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">10kΩ + 10µF (0.1s)</button>
+              <button type="button" data-rc-preset="1000,0.1" class="rc-preset-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">1kΩ + 0.1µF (~1.59kHz)</button>
+              <button type="button" data-rc-preset="100000,1" class="rc-preset-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 text-xs font-bold text-slate-300 hover:border-cyan-400">100kΩ + 1µF (0.1s)</button>
+            </div>
+
+            <div id="rcResult" class="mt-4 rounded-xl border border-slate-800 bg-lab-950/90 p-4 text-xs leading-relaxed text-slate-200 sm:text-sm"></div>
+          </div>
+
+          <!-- حاسبة 4: مقاومة الليد -->
+          <div class="rounded-2xl border border-cyan-500/30 bg-lab-900/95 p-6 shadow-lg">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3.5">
+              <div>
+                <h3 class="text-lg font-extrabold text-white">4. حاسبة مقاومة الليد (LED Resistor)</h3>
+                <p class="text-xs text-slate-400">أقرب قيمة قياسية <span class="ltr-num text-cyan-300">E12/E24</span>، التيار الفعلي، والقدرة المبددة والآمنة</p>
+              </div>
+              <span class="rounded-lg bg-cyan-500/15 px-2.5 py-1 ltr-num text-xs font-bold text-cyan-300">E12 / E24</span>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div>
+                <label for="ledVs" class="mb-1 block text-xs font-bold text-slate-300">جهد المصدر Vs (فولت)</label>
+                <input id="ledVs" type="number" step="any" value="12" class="led-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="ledVf" class="mb-1 block text-xs font-bold text-slate-300">جهد الليد Vf (فولت)</label>
+                <input id="ledVf" type="number" step="any" value="2.0" class="led-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+              <div>
+                <label for="ledImA" class="mb-1 block text-xs font-bold text-slate-300">التيار المطلوب (mA)</label>
+                <input id="ledImA" type="number" step="any" value="15" class="led-input w-full rounded-xl border border-slate-700 bg-lab-950 px-3.5 py-2.5 ltr-num text-sm text-white focus:border-cyan-400 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="mt-4 space-y-2">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-xs font-bold text-slate-400">لون الليد:</span>
+                <button type="button" data-led-vf="2.0" class="led-color-btn rounded-lg border border-rose-500/40 bg-rose-500/15 px-2.5 py-1 text-xs font-bold text-rose-200 hover:bg-rose-500 hover:text-slate-950">أحمر (2.0V)</button>
+                <button type="button" data-led-vf="2.1" class="led-color-btn rounded-lg border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-1 text-xs font-bold text-emerald-200 hover:bg-emerald-500 hover:text-slate-950">أخضر (2.1V)</button>
+                <button type="button" data-led-vf="2.2" class="led-color-btn rounded-lg border border-amber-500/40 bg-amber-500/15 px-2.5 py-1 text-xs font-bold text-amber-200 hover:bg-amber-500 hover:text-slate-950">أصفر (2.2V)</button>
+                <button type="button" data-led-vf="3.2" class="led-color-btn rounded-lg border border-cyan-500/40 bg-cyan-500/15 px-2.5 py-1 text-xs font-bold text-cyan-200 hover:bg-cyan-500 hover:text-slate-950">أزرق / أبيض (3.2V)</button>
+              </div>
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-xs font-bold text-slate-400">جهد التغذية:</span>
+                <button type="button" data-led-vs="5" class="led-vs-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 ltr-num text-xs font-bold text-slate-300 hover:border-cyan-400">5V</button>
+                <button type="button" data-led-vs="9" class="led-vs-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 ltr-num text-xs font-bold text-slate-300 hover:border-cyan-400">9V</button>
+                <button type="button" data-led-vs="12" class="led-vs-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 ltr-num text-xs font-bold text-slate-300 hover:border-cyan-400">12V</button>
+                <button type="button" data-led-vs="24" class="led-vs-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1 ltr-num text-xs font-bold text-slate-300 hover:border-cyan-400">24V</button>
+              </div>
+            </div>
+
+            <div id="ledResult" class="mt-4 rounded-xl border border-slate-800 bg-lab-950/90 p-4 text-xs leading-relaxed text-slate-200 sm:text-sm"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. قسم خدمات وابتكارات «إبداع» في المنيا والمنيا الجديدة -->
+    <section id="ibdaa" class="border-b border-slate-800/80 bg-lab-900/40 py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+          <div>
+            <span class="text-xs font-extrabold tracking-wide text-amber-400">IBDAA SERVICES &amp; INNOVATIONS • MINYA</span>
+            <h2 class="mt-1 text-2xl font-black text-white sm:text-3xl">خدمات وابتكارات «إبداع» في المنيا والمنيا الجديدة</h2>
+            <p class="mt-2 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+              ورشة وابتكارات <strong class="font-bold text-white">أبو يوسف للإلكترونيات</strong> في <strong class="font-bold text-amber-300">المنيا والمنيا الجديدة</strong>: صيانة الكروت والأجهزة، برمجة الفلاشات والذاكرة والهاردات، سوفتوير الهواتف، وتصميم الدوائر والأدوات المبتكرة.
+            </p>
+          </div>
+
+          <div id="ibdaaFilterBar" class="flex flex-wrap gap-2" role="tablist" aria-label="تصفية خدمات إبداع">
+            <button type="button" data-ibdaa-filter="all" class="ibdaa-filter-btn rounded-xl bg-amber-400 px-3.5 py-2 text-xs font-extrabold text-slate-950 transition">الكل</button>
+            <button type="button" data-ibdaa-filter="boards" class="ibdaa-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-amber-400/50 hover:text-white">صيانة الكروت والأجهزة</button>
+            <button type="button" data-ibdaa-filter="software" class="ibdaa-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-amber-400/50 hover:text-white">برمجة وسوفتوير</button>
+            <button type="button" data-ibdaa-filter="innovation" class="ibdaa-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-amber-400/50 hover:text-white">ابتكارات ودوائر</button>
+          </div>
+        </div>
+
+        <div id="ibdaaGrid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- 8. قسم بلاغات الأعطال والتواصل عبر واتساب -->
+    <section id="maintenance" class="py-14 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <!-- العمود الأيمن: ضبط رقم الواتساب ومعلومات الورشة -->
+          <div class="space-y-5 lg:col-span-5">
+            <div>
+              <span class="text-xs font-extrabold tracking-wide text-emerald-400">FAULT REPORTS &amp; WHATSAPP</span>
+              <h2 class="mt-1 text-2xl font-black text-white sm:text-3xl">بلاغات الأعطال والتواصل عبر واتساب</h2>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                اختر نوع العطل أو اكتب تفاصيل الجهاز لتوليد رسالة واتساب منظمة وإرسالها مباشرة عبر <span class="ltr-num text-emerald-300">wa.me</span> أو نسخها إلى ورشة <strong class="font-bold text-white">إبداع</strong> في <strong class="font-bold text-amber-300">المنيا والمنيا الجديدة</strong>.
+              </p>
+            </div>
+
+            <div class="space-y-3 rounded-2xl border border-slate-800 bg-lab-900/90 p-5 text-sm">
+              <div class="rounded-xl bg-lab-950/80 p-3.5">
+                <div class="font-bold text-amber-300">نطاق العمل والخدمة</div>
+                <div class="mt-0.5 text-xs text-slate-300">المنيا • المنيا الجديدة • مراكز محافظة المنيا</div>
+              </div>
+
+              <div class="rounded-xl bg-lab-950/80 p-3.5">
+                <label for="workshopWaNumber" class="block font-bold text-emerald-300">رقم واتساب الخاص بالورشة</label>
+                <p class="mt-0.5 text-xs text-slate-400">أدخل الرقم بالصيغة الدولية دون أصفار بادئة أو رموز (مثال: <span class="ltr-num text-slate-200">201000000000</span>).</p>
+                <div class="mt-2.5 flex flex-col gap-2 sm:flex-row">
+                  <input id="workshopWaNumber" type="tel" value="201000000000" placeholder="2010xxxxxxxx" class="w-full rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 ltr-num text-xs text-white focus:border-emerald-400 focus:outline-none sm:flex-1" />
+                  <button type="button" id="saveWaNumberBtn" class="rounded-xl bg-emerald-500/20 px-3.5 py-2 text-xs font-extrabold text-emerald-300 ring-1 ring-inset ring-emerald-400/35 transition hover:bg-emerald-500 hover:text-slate-950">
+                    حفظ الرقم
+                  </button>
+                </div>
+                <div id="waNumberStatus" class="mt-1.5 text-[11px] font-semibold text-emerald-400"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- العمود الأيسر: نموذج البلاغ ومعاينة الرسالة -->
+          <div class="lg:col-span-7">
+            <form id="maintenanceForm" class="rounded-2xl border border-slate-800 bg-lab-900/95 p-6 shadow-xl sm:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+                <div>
+                  <h3 class="text-lg font-extrabold text-white">نموذج تسجيل بلاغ عطل أو طلب دائرة</h3>
+                  <p class="text-xs text-slate-400">تتحدث رسالة الواتساب تلقائياً عند الكتابة أو اختيار عطل سريع</p>
+                </div>
+                <span class="rounded-lg bg-emerald-500/15 px-3 py-1 ltr-num text-xs font-extrabold text-emerald-300">wa.me</span>
+              </div>
+
+              <!-- أزرار اختيار سريع للأعطال -->
+              <div class="mt-4">
+                <span class="block text-xs font-bold text-slate-300">اختيار سريع للأعطال والخدمات:</span>
+                <div class="mt-2 flex flex-wrap gap-1.5">
+                  <button type="button" data-quick-fault="عطل كارت غسالة (لا يعمل / لا يسحب ماء / لا يعصر / باور أو تحكم)" class="quick-fault-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-amber-400 hover:text-amber-300">كروت الغسالات</button>
+                  <button type="button" data-quick-fault="عطل ماكينة لحام إنفرتر (بدون خرج / فصل حماية / باور أو درايفر)" class="quick-fault-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-amber-400 hover:text-amber-300">ماكينات اللحام الإنفرتر</button>
+                  <button type="button" data-quick-fault="عطل كاميرات أو جهاز DVR هيكفيجن Hikvision (باور / إقلاع / صورة أو تسجيل)" class="quick-fault-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-amber-400 hover:text-amber-300">كاميرات وDVR هيكفيجن</button>
+                  <button type="button" data-quick-fault="عطل شاشة أو ريسيفر (باور / إضاءة / إشارة / توقف إقلاع)" class="quick-fault-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300">الشاشات والرسيفرات</button>
+                  <button type="button" data-quick-fault="فحص هارد ديسك أو برمجة فلاشات وذاكرة أو سوفتوير هواتف" class="quick-fault-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300">هارد / فلاش وذاكرة / سوفتوير</button>
+                  <button type="button" data-quick-fault="تصميم أو تنفيذ دائرة أو أداة مبتكرة (مثل جهاز ضبط طبق الدش المحمول ببطارية قابلة للشحن وعرض الفيديو على الكمبيوتر وهاتف أندرويد)" class="quick-fault-btn rounded-lg border border-slate-700 bg-lab-950 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-emerald-400 hover:text-emerald-300">ابتكار ودائرة مخصصة</button>
+                </div>
+              </div>
+
+              <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="clientName" class="mb-1.5 block text-xs font-bold text-slate-200">الاسم الكامل *</label>
+                  <input id="clientName" type="text" required placeholder="مثال: أحمد علي" class="wa-sync-field w-full rounded-xl border border-slate-700 bg-lab-950 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none" />
+                </div>
+                <div>
+                  <label for="clientArea" class="mb-1.5 block text-xs font-bold text-slate-200">المنطقة</label>
+                  <select id="clientArea" class="wa-sync-field w-full rounded-xl border border-slate-700 bg-lab-950 px-4 py-3 text-sm text-white focus:border-cyan-400 focus:outline-none">
+                    <option value="المنيا الجديدة">المنيا الجديدة</option>
+                    <option value="مدينة المنيا">مدينة المنيا</option>
+                    <option value="مراكز محافظة المنيا">مراكز محافظة المنيا</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="deviceType" class="mb-1.5 block text-xs font-bold text-slate-200">نوع الجهاز أو الدائرة</label>
+                  <input id="deviceType" type="text" placeholder="مثال: كارت غسالة / إنفرتر / DVR هيكفيجن..." class="wa-sync-field w-full rounded-xl border border-slate-700 bg-lab-950 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none" />
+                </div>
+                <div>
+                  <label for="clientPhone" class="mb-1.5 block text-xs font-bold text-slate-200">رقم الهاتف (اختياري)</label>
+                  <input id="clientPhone" type="text" placeholder="مثال: 010xxxxxxxx" class="wa-sync-field w-full rounded-xl border border-slate-700 bg-lab-950 px-4 py-3 ltr-num text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <label for="faultDetails" class="mb-1.5 block text-xs font-bold text-slate-200">وصف العطل أو المطلوب *</label>
+                <textarea id="faultDetails" rows="3" required placeholder="اكتب تفاصيل العطل أو مواصفات الدائرة أو الأداة المطلوبة..." class="wa-sync-field w-full rounded-xl border border-slate-700 bg-lab-950 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"></textarea>
+              </div>
+
+              <!-- معاينة رسالة الواتساب المنظمة -->
+              <div class="mt-5 rounded-2xl border border-slate-800 bg-lab-950/90 p-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span class="text-xs font-extrabold text-emerald-300">رسالة واتساب المنظمة الجاهزة:</span>
+                  <button type="button" id="copyWaMsgBtn" class="rounded-lg border border-slate-700 bg-lab-850 px-3 py-1 text-xs font-bold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300">
+                    نسخ الرسالة
+                  </button>
+                </div>
+                <pre id="waMessagePreview" class="mt-2.5 whitespace-pre-wrap rounded-xl border border-slate-800/80 bg-lab-900/70 p-3 text-xs leading-relaxed text-slate-200"></pre>
+                <div id="copyFeedbackBox" class="mt-2 hidden text-xs font-bold text-emerald-400"></div>
+              </div>
+
+              <!-- أزرار الفتح المباشر لـ wa.me وتأكيد البلاغ -->
+              <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-3">
+                  <a id="directSendWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-black text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12.04 2c-5.52 0-10 4.44-10 9.92 0 1.75.46 3.46 1.33 4.97L2 22l5.25-1.36a10.05 10.05 0 0 0 4.79 1.22h.01c5.52 0 10-4.44 10-9.92 0-2.65-1.04-5.14-2.93-7.01A9.93 9.93 0 0 0 12.04 2Zm5.84 14.07c-.24.68-1.41 1.3-1.94 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.24-4.79-4.13-4.94-4.32-.15-.19-1.18-1.56-1.18-2.98 0-1.42.75-2.12 1.02-2.41.27-.29.59-.36.79-.36.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.24 1.63 2.01 1.12.99 2.06 1.3 2.35 1.44.29.15.46.12.63-.07.17-.19.72-.83.91-1.12.19-.29.39-.24.65-.14.27.1 1.69.79 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z" />
+                    </svg>
+                    <span>إرسال عبر واتساب</span>
+                  </a>
+                  <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-5 py-3 text-sm font-extrabold text-slate-950 transition hover:bg-cyan-400">
+                    تأكيد تسجيل البلاغ
+                  </button>
+                </div>
+                <span class="text-xs text-slate-400">إبداع • أبو يوسف للإلكترونيات</span>
+              </div>
+
+              <div id="formSubmitNotice" class="mt-4 hidden rounded-xl border border-emerald-500/40 bg-emerald-950/40 p-4 text-xs leading-relaxed text-emerald-100 sm:text-sm" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- زر واتساب عائم أسفل الشاشة -->
+  <a
+    href="#"
+    data-wa-message="مرحباً أبو يوسف، أرغب في التواصل السريع عبر واتساب مع ورشة إبداع (المنيا والمنيا الجديدة)."
+    aria-label="تواصل واتساب سريع"
+    class="wa-direct-btn fixed bottom-4 left-4 z-30 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-3 text-xs font-black text-slate-950 shadow-2xl shadow-emerald-950/80 ring-2 ring-emerald-300/60 transition hover:scale-105 hover:bg-emerald-400 sm:bottom-6 sm:left-6 sm:text-sm"
+  >
+    <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2c-5.52 0-10 4.44-10 9.92 0 1.75.46 3.46 1.33 4.97L2 22l5.25-1.36a10.05 10.05 0 0 0 4.79 1.22h.01c5.52 0 10-4.44 10-9.92 0-2.65-1.04-5.14-2.93-7.01A9.93 9.93 0 0 0 12.04 2Zm5.84 14.07c-.24.68-1.41 1.3-1.94 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.24-4.79-4.13-4.94-4.32-.15-.19-1.18-1.56-1.18-2.98 0-1.42.75-2.12 1.02-2.41.27-.29.59-.36.79-.36.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.24 1.63 2.01 1.12.99 2.06 1.3 2.35 1.44.29.15.46.12.63-.07.17-.19.72-.83.91-1.12.19-.29.39-.24.65-.14.27.1 1.69.79 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z" />
+    </svg>
+    <span>واتساب</span>
+  </a>
+
+  <!-- التذييل -->
+  <footer class="border-t border-slate-800/90 bg-lab-950 py-8">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 sm:text-right lg:px-8">
+      <div>
+        <div class="text-sm font-black text-white">الإلكترونيات ببساطة — إبداع</div>
+        <div class="mt-0.5 text-xs text-slate-400">أبو يوسف للإلكترونيات • المنيا والمنيا الجديدة</div>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-bold">
+        <a href="#fundamentals" class="text-slate-400 hover:text-cyan-300">المفاهيم</a>
+        <a href="#components" class="text-slate-400 hover:text-cyan-300">المكونات</a>
+        <a href="#calculators" class="text-slate-400 hover:text-cyan-300">الحاسبات</a>
+        <a href="#ibdaa" class="text-amber-300 hover:text-amber-200">إبداع</a>
+        <button type="button" data-fault-preset="طلب صيانة عطل — المنيا / المنيا الجديدة" class="fault-trigger text-amber-300 hover:underline">طلب صيانة عطل</button>
+        <a href="#" data-wa-message="مرحباً أبو يوسف، أرغب في التواصل مع ورشة إبداع في المنيا أو المنيا الجديدة." class="wa-direct-btn text-emerald-400 hover:underline">واتساب</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      "use strict";
+
+      /* بيانات موسوعة المكونات والوحدات العملية */
+      var COMPONENTS = [
+        {
+          cat: "basic",
+          catLabel: "أساسية",
+          badgeClass: "bg-cyan-500/15 text-cyan-300",
+          code: "R · Ω · W",
+          title: "المقاومات الكهربائية (Resistors)",
+          desc: "تحد من التيار وتقسّم الجهد وتبدّد جزءاً من القدرة كحرارة، وتتوفر بقيم قياسية وأحجام قدرة متنوعة.",
+          tip: "راعِ قدرة المقاومة (الوات) مع التيار والجهد لتجنب السخونة الزائدة."
+        },
+        {
+          cat: "basic",
+          catLabel: "أساسية",
+          badgeClass: "bg-cyan-500/15 text-cyan-300",
+          code: "C · µF · nF · pF",
+          title: "المكثفات (Capacitors)",
+          desc: "تخزّن الشحنة وتنعّم الجهد المستمر وتمرر الإشارات المترددة وتمنع المركبة المستمرة.",
+          tip: "تحقق من قطبية المكثفات المستقطبة وجهد تحملها وتفريغ المكثفات الكبيرة بأمان."
+        },
+        {
+          cat: "basic",
+          catLabel: "أساسية",
+          badgeClass: "bg-cyan-500/15 text-cyan-300",
+          code: "D · Rectifier · Zener · LED",
+          title: "الثنائيات (Diodes)",
+          desc: "تمرر التيار في اتجاه أساسي وتُستخدم للتقويم والحماية من عكس القطبية وتثبيت الجهد والإشارة الضوئية.",
+          tip: "افحص الثنائي بوضع فحص الدايود وتأكد من عدم وجود قصر كامل بين طرفيه."
+        },
+        {
+          cat: "power",
+          catLabel: "قدرة وحماية",
+          badgeClass: "bg-amber-500/15 text-amber-300",
+          code: "L · µH · mH",
+          title: "الملفات والخانقات (Inductors & Chokes)",
+          desc: "تخزّن الطاقة في مجال مغناطيسي وتقاوم تغيّر التيار المفاجئ في دوائر التبديل والترشيح والتنقية.",
+          tip: "افحص لحامات الملف وسلامة قلبه وحرارة التشغيل تحت الحمل."
+        },
+        {
+          cat: "power",
+          catLabel: "قدرة وحماية",
+          badgeClass: "bg-amber-500/15 text-amber-300",
+          code: "BJT · MOSFET",
+          title: "الترانزستورات والموسفت (Transistors & MOSFETs)",
+          desc: "عناصر تبديل وتحكم وتكبير تستخدم لقيادة الأحمال والملفات والمحركات ودوائر القدرة.",
+          tip: "افحص وجود قصر بين الأطراف قبل تغذية الدائرة وراعِ تبريد الموسفت عند الأحمال العالية."
+        },
+        {
+          cat: "control",
+          catLabel: "تحكم وقياس",
+          badgeClass: "bg-emerald-500/15 text-emerald-300",
+          code: "PC817 · Optocoupler",
+          title: "الفوتوكابلر (Optocouplers)",
+          desc: "ينقل الإشارة أو التغذية الراجعة ضوئياً مع عزل كهربائي بين دائرة التحكم ودائرة القدرة.",
+          tip: "اختبر طرفي الليد الداخلي والترانزستور الضوئي عند عدم استقرار الخرج."
+        },
+        {
+          cat: "control",
+          catLabel: "تحكم وقياس",
+          badgeClass: "bg-emerald-500/15 text-emerald-300",
+          code: "LDO · Buck · Boost",
+          title: "منظمات الجهد (Voltage Regulators)",
+          desc: "تثبت الجهد عند قيمة مطلوبة مثل 5V أو 3.3V وتضم منظمات خطية ومحولات خفض ورفع.",
+          tip: "قِس جهد الدخل والخرج بالنسبة للأرضي وتأكد من عدم ارتفاع الحرارة فوق الحد الآمن."
+        },
+        {
+          cat: "control",
+          catLabel: "تحكم وقياس",
+          badgeClass: "bg-emerald-500/15 text-emerald-300",
+          code: "Relay · Coil",
+          title: "الريليهات (Relays)",
+          desc: "مفاتيح كهروميكانيكية تتيح لدائرة تحكم منخفضة الجهد تشغيل أحمال أعلى مع عزل كهربائي.",
+          tip: "تأكد من توافق جهد الملف مع جهد التشغيل ووجود دايود حماية عكسي حول الملف."
+        },
+        {
+          cat: "ready",
+          catLabel: "وحدات جاهزة",
+          badgeClass: "bg-purple-500/15 text-purple-300",
+          code: "TP4056 · 3S BMS",
+          title: "وحدات شحن وحماية الليثيوم (TP4056 وBMS)",
+          desc: "وحدات جاهزة لتنظيم شحن خلايا الليثيوم وحمايتها من الشحن الزائد والتفريغ العميق والقصر الكهربائي.",
+          tip: "تأكد من سلامة الخلايا وجهدها قبل توصيل الشاحن أو وحدة الحماية."
+        }
+      ];
+
+      /* بيانات مسارات تشخيص الأعطال العملية */
+      var DIAGNOSTICS = [
+        {
+          tag: "BOARDS & POWER",
+          tagClass: "bg-amber-500/15 text-amber-300",
+          title: "تشخيص كروت الغسالات وماكينات اللحام الإنفرتر",
+          preset: "صيانة كارت غسالة أو ماكينة لحام إنفرتر — المنيا / المنيا الجديدة",
+          steps: [
+            "فحص الباور والفيوز ومكثفات التنعيم والتأكد من خلو المسارات الرئيسية من القصر.",
+            "قياس الجهود الفرعية والتغذية المساعدة لوحدات التحكم والقيادة قبل تشغيل الحمل.",
+            "فحص عناصر التبديل والحساسات وأطراف التوصيل للتأكد من سلامة الإشارات."
+          ]
+        },
+        {
+          tag: "DVR, CAMERAS & TV",
+          tagClass: "bg-cyan-500/15 text-cyan-300",
+          title: "تشخيص كاميرات وأجهزة DVR هيكفيجن والشاشات والرسيفرات",
+          preset: "صيانة كاميرات أو جهاز DVR هيكفيجن أو شاشة أو ريسيفر — المنيا / المنيا الجديدة",
+          steps: [
+            "قياس خرج المحول والجهود المستقرة على اللوحة وملاحظة مؤشرات الإقلاع.",
+            "فحص دوائر الحماية والمداخل والخرج وكابلات الإشارة والصورة.",
+            "تحديد سبب العطل سواء كان في دائرة التغذية أو المعالجة أو السوفت وير."
+          ]
+        },
+        {
+          tag: "STORAGE & FIRMWARE",
+          tagClass: "bg-emerald-500/15 text-emerald-300",
+          title: "تشخيص الهاردات وبرمجة الفلاشات والذاكرة وسوفتوير الهواتف",
+          preset: "فحص هارد أو برمجة فلاش وذاكرة أو سوفتوير هاتف — ورشة إبداع",
+          steps: [
+            "التأكد من استقرار التغذية والاتصال قبل قراءة أو كتابة بيانات الفلاش والذاكرة.",
+            "فحص حالة الهارد أو تجهيز ملفات السوفت وير المناسبة بعناية ودقة.",
+            "اختبار التشغيل بعد البرمجة أو التفليش للتحقق من الاستقرار الكامل."
+          ]
+        },
+        {
+          tag: "CUSTOM CIRCUITS",
+          tagClass: "bg-purple-500/15 text-purple-300",
+          title: "تشخيص وتنفيذ الدوائر والأدوات المبتكرة",
+          preset: "تشخيص أو تنفيذ دائرة أو أداة مبتكرة — ورشة إبداع",
+          steps: [
+            "تحديد جهد التغذية وسعة البطارية وطبيعة الإشارة أو العرض المطلوب.",
+            "اختيار المكونات ووحدات الشحن والحماية المناسبة وتجميعها بشكل عملي آمن.",
+            "اختبار الأداء العملي وتوضيح طريقة الاستخدام والصيانة."
+          ]
+        }
+      ];
+
+      /* بيانات خدمات وابتكارات إبداع */
+      var IBDAA_ITEMS = [
+        {
+          cat: "boards",
+          catLabel: "صيانة الكروت والأجهزة",
+          badgeClass: "bg-amber-500/15 text-amber-300",
+          title: "صيانة كروت الغسالات وماكينات اللحام الإنفرتر",
+          desc: "فحص وإصلاح كروت الغسالات وماكينات اللحام الإنفرتر على مستوى المكونات في المنيا والمنيا الجديدة.",
+          preset: "صيانة كارت غسالة أو ماكينة لحام إنفرتر — المنيا / المنيا الجديدة"
+        },
+        {
+          cat: "boards",
+          catLabel: "صيانة الكروت والأجهزة",
+          badgeClass: "bg-amber-500/15 text-amber-300",
+          title: "صيانة كاميرات وأجهزة DVR هيكفيجن والشاشات والرسيفرات",
+          desc: "تشخيص وإصلاح أعطال الباور والإقلاع والصورة والإشارة في أجهزة DVR وكاميرات هيكفيجن والشاشات والرسيفرات.",
+          preset: "صيانة كاميرات أو جهاز DVR هيكفيجن أو شاشة أو ريسيفر — المنيا / المنيا الجديدة"
+        },
+        {
+          cat: "software",
+          catLabel: "برمجة وسوفتوير",
+          badgeClass: "bg-cyan-500/15 text-cyan-300",
+          title: "فحص الهاردات وبرمجة الفلاشات والذاكرة وسوفتوير الهواتف",
+          desc: "فحص الهاردات، وقراءة وبرمجة شرائح الفلاش والذاكرة، وعمل سوفتوير الهواتف بدقة.",
+          preset: "فحص هارد أو برمجة فلاش وذاكرة أو سوفتوير هاتف — ورشة إبداع"
+        },
+        {
+          cat: "innovation",
+          catLabel: "ابتكارات ودوائر",
+          badgeClass: "bg-emerald-500/15 text-emerald-300",
+          title: "جهاز ضبط طبق الدش المحمول ببطارية قابلة للشحن",
+          desc: "أداة مبتكرة محمولة تعمل ببطارية قابلة للشحن لضبط أطباق الدش بسهولة مع عرض الفيديو على الكمبيوتر وهاتف أندرويد.",
+          preset: "طلب أو استفسار بخصوص جهاز ضبط طبق الدش المحمول ببطارية قابلة للشحن مع عرض الفيديو على الكمبيوتر وهاتف أندرويد"
+        },
+        {
+          cat: "innovation",
+          catLabel: "ابتكارات ودوائر",
+          badgeClass: "bg-emerald-500/15 text-emerald-300",
+          title: "تصميم وتجميع الدوائر والأدوات المساعدة المبتكرة",
+          desc: "تنفيذ دوائر الصوت والطاقة والشحن والحماية والقياس والنماذج العملية حسب الحاجة.",
+          preset: "تصميم أو تنفيذ دائرة أو أداة مبتكرة — ورشة إبداع"
+        },
+        {
+          cat: "software",
+          catLabel: "برمجة وسوفتوير",
+          badgeClass: "bg-cyan-500/15 text-cyan-300",
+          title: "متابعة فنية واستشارات صيانة في المنيا والمنيا الجديدة",
+          desc: "تواصل مباشر مع أبو يوسف للإلكترونيات لحجز فحص الأعطال أو الاستفسار عن الخدمات والابتكارات.",
+          preset: "استفسار أو حجز فحص صيانة — المنيا / المنيا الجديدة"
+        }
+      ];
+
+      /* دوال مساعدة للأرقام والواتساب */
+      function numVal(id) {
+        var el = document.getElementById(id);
+        if (!el) return NaN;
+        var n = parseFloat(el.value);
+        return isFinite(n) ? n : NaN;
+      }
+
+      function fmtUnit(val, unit) {
+        if (!isFinite(val)) return "--";
+        var abs = Math.abs(val);
+        var txt = "";
+        if (abs >= 1000000) {
+          txt = (val / 1000000).toFixed(2).replace(/\.?0+$/, "") + " M";
+        } else if (abs >= 1000) {
+          txt = (val / 1000).toFixed(2).replace(/\.?0+$/, "") + " k";
+        } else if (abs >= 1) {
+          txt = val.toFixed(2).replace(/\.?0+$/, "");
+        } else if (abs >= 0.001) {
+          txt = val.toFixed(4).replace(/\.?0+$/, "");
+        } else {
+          txt = val.toExponential(2);
+        }
+        return unit ? txt + " " + unit : txt;
+      }
+
+      function getCleanWaNumber() {
+        var input = document.getElementById("workshopWaNumber");
+        var digits = input ? String(input.value || "").replace(/\D/g, "") : "";
+        return digits || "201000000000";
+      }
+
+      function makeWaUrl(messageText) {
+        var phone = getCleanWaNumber();
+        var msg = messageText || "مرحباً أبو يوسف، أرغب في التواصل مع ورشة إبداع في المنيا أو المنيا الجديدة.";
+        return "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+      }
+
+      function buildOrganizedWhatsappMessage() {
+        var nameEl = document.getElementById("clientName");
+        var areaEl = document.getElementById("clientArea");
+        var deviceEl = document.getElementById("deviceType");
+        var phoneEl = document.getElementById("clientPhone");
+        var detailsEl = document.getElementById("faultDetails");
+
+        var name = nameEl && nameEl.value.trim() ? nameEl.value.trim() : "غير محدد";
+        var area = areaEl && areaEl.value ? areaEl.value : "المنيا الجديدة";
+        var device = deviceEl && deviceEl.value.trim() ? deviceEl.value.trim() : "غير محدد";
+        var phone = phoneEl && phoneEl.value.trim() ? phoneEl.value.trim() : "غير مضاف";
+        var details = detailsEl && detailsEl.value.trim() ? detailsEl.value.trim() : "يرجى التواصل لتوضيح تفاصيل العطل أو المطلوب.";
+
+        return [
+          "بلاغ صيانة / طلب — ورشة إبداع (أبو يوسف للإلكترونيات)",
+          "الاسم: " + name,
+          "المنطقة: " + area,
+          "الجهاز / الدائرة: " + device,
+          "رقم الهاتف: " + phone,
+          "تفاصيل العطل / المطلوب: " + details
+        ].join("\n");
+      }
+
+      function syncAllWhatsappLinks() {
+        var msg = buildOrganizedWhatsappMessage();
+        var preview = document.getElementById("waMessagePreview");
+        var sendBtn = document.getElementById("directSendWhatsappLink");
+
+        if (preview) preview.textContent = msg;
+        if (sendBtn) sendBtn.setAttribute("href", makeWaUrl(msg));
+
+        var directBtns = document.querySelectorAll(".wa-direct-btn");
+        for (var i = 0; i < directBtns.length; i++) {
+          var customMsg = directBtns[i].getAttribute("data-wa-message");
+          directBtns[i].setAttribute("href", makeWaUrl(customMsg));
+        }
+      }
+
+      function openMaintenanceWithPreset(presetText) {
+        var detailsEl = document.getElementById("faultDetails");
+        var sectionEl = document.getElementById("maintenance");
+        if (detailsEl && presetText) {
+          if (!detailsEl.value.trim()) {
+            detailsEl.value = presetText;
+          } else if (detailsEl.value.indexOf(presetText) === -1) {
+            detailsEl.value = presetText + " — " + detailsEl.value;
+          }
+        }
+        syncAllWhatsappLinks();
+        if (sectionEl) {
+          sectionEl.scrollIntoView({ behavior: "smooth" });
+        }
+        if (detailsEl) {
+          setTimeout(function () {
+            try { detailsEl.focus(); } catch (err) {}
+          }, 300);
+        }
+      }
+
+      /* رندر موسوعة المكونات */
+      var activeCompCat = "all";
+      function renderComponentsGrid() {
+        var grid = document.getElementById("componentsGrid");
+        if (!grid) return;
+
+        var list = [];
+        for (var i = 0; i < COMPONENTS.length; i++) {
+          if (activeCompCat === "all" || COMPONENTS[i].cat === activeCompCat) {
+            list.push(COMPONENTS[i]);
+          }
+        }
+
+        var html = "";
+        for (var j = 0; j < list.length; j++) {
+          var c = list[j];
+          html += '<article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-lab-900/90 p-6 transition hover:border-cyan-400/40">' +
+            '<div>' +
+              '<div class="flex items-center justify-between gap-2">' +
+                '<span class="rounded-lg px-3 py-1 text-xs font-extrabold ' + c.badgeClass + '">' + c.catLabel + '</span>' +
+                '<span class="ltr-num text-xs font-semibold text-slate-400">' + c.code + '</span>' +
+              '</div>' +
+              '<h3 class="mt-4 text-lg font-extrabold text-white">' + c.title + '</h3>' +
+              '<p class="mt-2 text-sm leading-relaxed text-slate-300">' + c.desc + '</p>' +
+            '</div>' +
+            '<div class="mt-4 rounded-xl border border-slate-800 bg-lab-950/90 p-3 text-xs leading-relaxed text-slate-400">' +
+              '<strong class="text-cyan-300">تنبيه عملي:</strong> ' + c.tip +
+            '</div>' +
+          '</article>';
+        }
+        grid.innerHTML = html;
+      }
+
+      /* رندر مسارات تشخيص الأعطال */
+      function renderDiagnosticsGrid() {
+        var grid = document.getElementById("diagnosticsGrid");
+        if (!grid) return;
+
+        var html = "";
+        for (var i = 0; i < DIAGNOSTICS.length; i++) {
+          var d = DIAGNOSTICS[i];
+          var stepsHtml = "";
+          for (var s = 0; s < d.steps.length; s++) {
+            stepsHtml += '<li class="flex items-start gap-2.5 text-xs leading-relaxed text-slate-300 sm:text-sm">' +
+              '<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-lab-850 ltr-num text-xs font-bold text-cyan-300">' + (s + 1) + '</span>' +
+              '<span>' + d.steps[s] + '</span>' +
+            '</li>';
+          }
+
+          html += '<article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-lab-900/90 p-6">' +
+            '<div>' +
+              '<span class="inline-block rounded-lg px-3 py-1 ltr-num text-xs font-bold ' + d.tagClass + '">' + d.tag + '</span>' +
+              '<h3 class="mt-3 text-lg font-extrabold text-white">' + d.title + '</h3>' +
+              '<ul class="mt-4 space-y-2.5">' + stepsHtml + '</ul>' +
+            '</div>' +
+            '<div class="mt-5 border-t border-slate-800 pt-4">' +
+              '<button type="button" data-diag-preset="' + d.preset + '" class="diag-open-btn rounded-xl bg-amber-400/15 px-4 py-2 text-xs font-extrabold text-amber-300 ring-1 ring-inset ring-amber-400/35 transition hover:bg-amber-400 hover:text-slate-950">فتح بلاغ بهذا العطل</button>' +
+            '</div>' +
+          '</article>';
+        }
+        grid.innerHTML = html;
+
+        var diagBtns = grid.querySelectorAll(".diag-open-btn");
+        for (var b = 0; b < diagBtns.length; b++) {
+          diagBtns[b].addEventListener("click", function () {
+            openMaintenanceWithPreset(this.getAttribute("data-diag-preset") || "");
+          });
+        }
+      }
+
+      /* رندر خدمات وابتكارات إبداع */
+      var activeIbdaaCat = "all";
+      function renderIbdaaGrid() {
+        var grid = document.getElementById("ibdaaGrid");
+        if (!grid) return;
+
+        var list = [];
+        for (var i = 0; i < IBDAA_ITEMS.length; i++) {
+          if (activeIbdaaCat === "all" || IBDAA_ITEMS[i].cat === activeIbdaaCat) {
+            list.push(IBDAA_ITEMS[i]);
+          }
+        }
+
+        var html = "";
+        for (var j = 0; j < list.length; j++) {
+          var item = list[j];
+          var waMsg = "مرحباً أبو يوسف، أرغب في التواصل بخصوص: " + item.title + " (المنيا / المنيا الجديدة).";
+          html += '<article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-lab-950/90 p-6 transition hover:border-amber-400/40">' +
+            '<div>' +
+              '<div class="flex items-center justify-between gap-2">' +
+                '<span class="rounded-lg px-3 py-1 text-xs font-extrabold ' + item.badgeClass + '">' + item.catLabel + '</span>' +
+                '<span class="text-xs font-bold text-slate-400">إبداع • المنيا</span>' +
+              '</div>' +
+              '<h3 class="mt-4 text-lg font-extrabold text-white">' + item.title + '</h3>' +
+              '<p class="mt-2 text-sm leading-relaxed text-slate-300">' + item.desc + '</p>' +
+            '</div>' +
+            '<div class="mt-5 flex flex-col gap-2 border-t border-slate-800 pt-3.5 sm:flex-row">' +
+              '<button type="button" data-ibdaa-preset="' + item.preset + '" class="ibdaa-req-btn flex-1 rounded-xl bg-amber-400/15 px-3.5 py-2.5 text-xs font-extrabold text-amber-300 ring-1 ring-inset ring-amber-400/35 transition hover:bg-amber-400 hover:text-slate-950">طلب صيانة</button>' +
+              '<a href="#" data-wa-message="' + waMsg + '" class="wa-direct-btn inline-flex items-center justify-center rounded-xl bg-emerald-500/15 px-3.5 py-2.5 text-xs font-extrabold text-emerald-300 ring-1 ring-inset ring-emerald-400/35 transition hover:bg-emerald-500 hover:text-slate-950">واتساب</a>' +
+            '</div>' +
+          '</article>';
+        }
+        grid.innerHTML = html;
+
+        var reqBtns = grid.querySelectorAll(".ibdaa-req-btn");
+        for (var k = 0; k < reqBtns.length; k++) {
+          reqBtns[k].addEventListener("click", function () {
+            openMaintenanceWithPreset(this.getAttribute("data-ibdaa-preset") || "");
+          });
+        }
+        syncAllWhatsappLinks();
+      }
+
+      /* الحاسبات الأربع الفورية */
+      var ohmMode = "calcR";
+      function calcOhmPower() {
+        var vEl = document.getElementById("ohmV");
+        var iEl = document.getElementById("ohmI");
+        var rEl = document.getElementById("ohmR");
+        var resEl = document.getElementById("ohmResult");
+        if (!vEl || !iEl || !rEl || !resEl) return;
+
+        var v = numVal("ohmV");
+        var iA = numVal("ohmI") / 1000;
+        var r = numVal("ohmR");
+
+        if (ohmMode === "calcR") {
+          if (isFinite(v) && isFinite(iA) && iA !== 0) {
+            r = v / iA;
+            rEl.value = r.toFixed(2).replace(/\.?0+$/, "");
+          }
+        } else if (ohmMode === "calcI") {
+          if (isFinite(v) && isFinite(r) && r !== 0) {
+            iA = v / r;
+            iEl.value = (iA * 1000).toFixed(2).replace(/\.?0+$/, "");
+          }
+        } else if (ohmMode === "calcV") {
+          if (isFinite(iA) && isFinite(r)) {
+            v = iA * r;
+            vEl.value = v.toFixed(2).replace(/\.?0+$/, "");
+          }
+        }
+
+        if (!isFinite(v) || !isFinite(iA) || !isFinite(r) || r <= 0) {
+          resEl.innerHTML = '<span class="text-amber-300">أدخل قيماً صحيحة أكبر من الصفر.</span>';
+          return;
+        }
+
+        var pW = v * iA;
+        resEl.innerHTML =
+          '<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">' +
+            '<div class="rounded-lg bg-lab-900 p-2.5"><div class="text-[11px] text-slate-400">الجهد V</div><div class="mt-0.5 ltr-num font-bold text-cyan-300">' + fmtUnit(v, "V") + '</div></div>' +
+            '<div class="rounded-lg bg-lab-900 p-2.5"><div class="text-[11px] text-slate-400">التيار I</div><div class="mt-0.5 ltr-num font-bold text-emerald-300">' + fmtUnit(iA * 1000, "mA") + '</div></div>' +
+            '<div class="rounded-lg bg-lab-900 p-2.5"><div class="text-[11px] text-slate-400">المقاومة R</div><div class="mt-0.5 ltr-num font-bold text-amber-300">' + fmtUnit(r, "Ω") + '</div></div>' +
+            '<div class="rounded-lg bg-lab-900 p-2.5"><div class="text-[11px] text-slate-400">القدرة P</div><div class="mt-0.5 ltr-num font-bold text-rose-300">' + fmtUnit(pW, "W") + '</div></div>' +
+          '</div>';
+      }
+
+      function calcVoltageDivider() {
+        var resEl = document.getElementById("divResult");
+        if (!resEl) return;
+        var vin = numVal("divVin");
+        var r1 = numVal("divR1");
+        var r2 = numVal("divR2");
+        var sumR = r1 + r2;
+
+        if (!isFinite(vin) || !isFinite(r1) || !isFinite(r2) || r1 < 0 || r2 < 0 || sumR <= 0) {
+          resEl.innerHTML = '<span class="text-amber-300">أدخل جهد دخل ومقاومات صالحة.</span>';
+          return;
+        }
+
+        var vout = vin * (r2 / sumR);
+        var ratio = (r2 / sumR) * 100;
+        resEl.innerHTML =
+          '<div class="flex flex-wrap items-center justify-between gap-3">' +
+            '<div><span class="text-slate-400">جهد الخرج Vout:</span> <strong class="ltr-num text-base text-emerald-300">' + vout.toFixed(3).replace(/\.?0+$/, "") + ' V</strong></div>' +
+            '<div><span class="text-slate-400">نسبة التقسيم:</span> <strong class="ltr-num text-cyan-300">' + ratio.toFixed(1) + '%</strong></div>' +
+          '</div>';
+      }
+
+      function calcRcTimeAndCutoff() {
+        var resEl = document.getElementById("rcResult");
+        if (!resEl) return;
+        var r = numVal("rcR");
+        var cFarad = numVal("rcC") / 1000000;
+
+        if (!isFinite(r) || !isFinite(cFarad) || r <= 0 || cFarad <= 0) {
+          resEl.innerHTML = '<span class="text-amber-300">أدخل قيمة مقاومة وسعة أكبر من الصفر.</span>';
+          return;
+        }
+
+        var tau = r * cFarad;
+        var fc = 1 / (2 * Math.PI * r * cFarad);
+        resEl.innerHTML =
+          '<div class="flex flex-wrap items-center justify-between gap-3">' +
+            '<div><span class="text-slate-400">ثابت الزمن τ:</span> <strong class="ltr-num text-base text-cyan-300">' + fmtUnit(tau, "s") + '</strong></div>' +
+            '<div><span class="text-slate-400">تردد القطع fc:</span> <strong class="ltr-num text-base text-emerald-300">' + fmtUnit(fc, "Hz") + '</strong></div>' +
+          '</div>';
+      }
+
+      var E24_SERIES = [
+        1.0, 1.1, 1.2, 1.3, 1.5, 1.6, 1.8, 2.0, 2.2, 2.4, 2.7, 3.0,
+        3.3, 3.6, 3.9, 4.3, 4.7, 5.1, 5.6, 6.2, 6.8, 7.5, 8.2, 9.1
+      ];
+
+      function nearestE24(idealOhm) {
+        if (!isFinite(idealOhm) || idealOhm <= 0) return 0;
+        var baseDecade = Math.pow(10, Math.floor(Math.log10(idealOhm)));
+        var best = E24_SERIES[0] * baseDecade;
+        var minDiff = Math.abs(best - idealOhm);
+        var factors = [0.1, 1, 10];
+        for (var f = 0; f < factors.length; f++) {
+          var dec = baseDecade * factors[f];
+          for (var i = 0; i < E24_SERIES.length; i++) {
+            var cand = E24_SERIES[i] * dec;
+            var diff = Math.abs(cand - idealOhm);
+            if (diff < minDiff) {
+              minDiff = diff;
+              best = cand;
+            }
+          }
+        }
+        return best;
+      }
+
+      function safeResistorWattage(powerW) {
+        var req = powerW * 2;
+        if (req <= 0.25) return "0.25 W (ربع وات)";
+        if (req <= 0.5) return "0.5 W (نصف وات)";
+        if (req <= 1) return "1 W (1 وات)";
+        if (req <= 2) return "2 W (2 وات)";
+        if (req <= 5) return "5 W (5 وات)";
+        return Math.ceil(req) + " W أو أعلى";
+      }
+
+      function calcLedResistor() {
+        var resEl = document.getElementById("ledResult");
+        if (!resEl) return;
+
+        var vs = numVal("ledVs");
+        var vf = numVal("ledVf");
+        var iMa = numVal("ledImA");
+
+        if (!isFinite(vs) || !isFinite(vf) || !isFinite(iMa) || iMa <= 0) {
+          resEl.innerHTML = '<span class="text-amber-300">أدخل قيماً صحيحة للجهود والتيار.</span>';
+          return;
+        }
+        if (vs <= vf) {
+          resEl.innerHTML = '<span class="text-rose-300">يجب أن يكون جهد المصدر (Vs) أعلى من جهد الليد (Vf).</span>';
+          return;
+        }
+
+        var vDrop = vs - vf;
+        var rIdeal = vDrop / (iMa / 1000);
+        var rStd = nearestE24(rIdeal);
+        var actualMa = rStd > 0 ? (vDrop / rStd) * 1000 : 0;
+        var powerW = vDrop * (actualMa / 1000);
+        var safeW = safeResistorWattage(powerW);
+
+        resEl.innerHTML =
+          '<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">' +
+            '<div class="rounded-lg bg-lab-900 p-3">' +
+              '<div class="text-[11px] text-slate-400">المقاومة المحسوبة / القياسية (E12/E24)</div>' +
+              '<div class="mt-1 ltr-num text-sm font-extrabold text-cyan-300">' + fmtUnit(rIdeal, "Ω") + ' → ' + fmtUnit(rStd, "Ω") + '</div>' +
+            '</div>' +
+            '<div class="rounded-lg bg-lab-900 p-3">' +
+              '<div class="text-[11px] text-slate-400">التيار الفعلي المتوقع</div>' +
+              '<div class="mt-1 ltr-num text-sm font-extrabold text-emerald-300">' + actualMa.toFixed(1) + ' mA</div>' +
+            '</div>' +
+            '<div class="rounded-lg bg-lab-900 p-3">' +
+              '<div class="text-[11px] text-slate-400">القدرة المبددة على المقاومة</div>' +
+              '<div class="mt-1 ltr-num text-sm font-extrabold text-amber-300">' + (powerW * 1000).toFixed(1) + ' mW (' + powerW.toFixed(3) + ' W)</div>' +
+            '</div>' +
+            '<div class="rounded-lg bg-lab-900 p-3">' +
+              '<div class="text-[11px] text-slate-400">القدرة الآمنة المقترحة</div>' +
+              '<div class="mt-1 text-sm font-extrabold text-rose-300">' + safeW + '</div>' +
+            '</div>' +
+          '</div>';
+      }
+
+      /* تشغيل الرندر والحاسبات والروابط */
+      renderComponentsGrid();
+      renderDiagnosticsGrid();
+      renderIbdaaGrid();
+      calcOhmPower();
+      calcVoltageDivider();
+      calcRcTimeAndCutoff();
+      calcLedResistor();
+      syncAllWhatsappLinks();
+
+      /* قائمة الجوال والتابلت */
+      var menuBtn = document.getElementById("mobileMenuBtn");
+      var navMenu = document.getElementById("mobileNavMenu");
+      var openIcon = document.getElementById("menuIconOpen");
+      var closeIcon = document.getElementById("menuIconClose");
+      if (menuBtn && navMenu) {
+        menuBtn.addEventListener("click", function () {
+          var willOpen = navMenu.classList.contains("hidden");
+          navMenu.classList.toggle("hidden", !willOpen);
+          menuBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+          if (openIcon) openIcon.classList.toggle("hidden", willOpen);
+          if (closeIcon) closeIcon.classList.toggle("hidden", !willOpen);
+        });
+        var mobLinks = navMenu.querySelectorAll(".mobile-link");
+        for (var m = 0; m < mobLinks.length; m++) {
+          mobLinks[m].addEventListener("click", function () {
+            navMenu.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+            if (openIcon) openIcon.classList.remove("hidden");
+            if (closeIcon) closeIcon.classList.add("hidden");
+          });
+        }
+      }
+
+      /* تصفية المكونات */
+      var compBtns = document.querySelectorAll(".comp-filter-btn");
+      for (var c = 0; c < compBtns.length; c++) {
+        compBtns[c].addEventListener("click", function () {
+          activeCompCat = this.getAttribute("data-comp-filter") || "all";
+          for (var x = 0; x < compBtns.length; x++) {
+            compBtns[x].className = "comp-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-cyan-400/50 hover:text-white";
+          }
+          this.className = "comp-filter-btn rounded-xl bg-cyan-500 px-3.5 py-2 text-xs font-extrabold text-slate-950 transition";
+          renderComponentsGrid();
+        });
+      }
+
+      /* تصفية خدمات إبداع */
+      var ibdaaBtns = document.querySelectorAll(".ibdaa-filter-btn");
+      for (var ib = 0; ib < ibdaaBtns.length; ib++) {
+        ibdaaBtns[ib].addEventListener("click", function () {
+          activeIbdaaCat = this.getAttribute("data-ibdaa-filter") || "all";
+          for (var y = 0; y < ibdaaBtns.length; y++) {
+            ibdaaBtns[y].className = "ibdaa-filter-btn rounded-xl border border-slate-700 bg-lab-900 px-3.5 py-2 text-xs font-bold text-slate-300 transition hover:border-amber-400/50 hover:text-white";
+          }
+          this.className = "ibdaa-filter-btn rounded-xl bg-amber-400 px-3.5 py-2 text-xs font-extrabold text-slate-950 transition";
+          renderIbdaaGrid();
+        });
+      }
+
+      /* مستمعات الحاسبة 1 */
+      var ohmInputs = document.querySelectorAll(".ohm-input");
+      for (var oi = 0; oi < ohmInputs.length; oi++) ohmInputs[oi].addEventListener("input", calcOhmPower);
+      var ohmModes = document.querySelectorAll(".ohm-mode-btn");
+      for (var om = 0; om < ohmModes.length; om++) {
+        ohmModes[om].addEventListener("click", function () {
+          ohmMode = this.getAttribute("data-ohm-mode") || "calcR";
+          calcOhmPower();
+        });
+      }
+      var ohmReset = document.getElementById("ohmResetBtn");
+      if (ohmReset) {
+        ohmReset.addEventListener("click", function () {
+          document.getElementById("ohmV").value = "12";
+          document.getElementById("ohmI").value = "100";
+          document.getElementById("ohmR").value = "";
+          ohmMode = "calcR";
+          calcOhmPower();
+        });
+      }
+
+      /* مستمعات الحاسبة 2 */
+      var divInputs = document.querySelectorAll(".div-input");
+      for (var di = 0; di < divInputs.length; di++) divInputs[di].addEventListener("input", calcVoltageDivider);
+      var divPresets = document.querySelectorAll(".div-preset-btn");
+      for (var dp = 0; dp < divPresets.length; dp++) {
+        divPresets[dp].addEventListener("click", function () {
+          var p = (this.getAttribute("data-div-preset") || "").split(",");
+          if (p.length === 3) {
+            document.getElementById("divVin").value = p[0];
+            document.getElementById("divR1").value = p[1];
+            document.getElementById("divR2").value = p[2];
+            calcVoltageDivider();
+          }
+        });
+      }
+
+      /* مستمعات الحاسبة 3 */
+      var rcInputs = document.querySelectorAll(".rc-input");
+      for (var ri = 0; ri < rcInputs.length; ri++) rcInputs[ri].addEventListener("input", calcRcTimeAndCutoff);
+      var rcPresets = document.querySelectorAll(".rc-preset-btn");
+      for (var rp = 0; rp < rcPresets.length; rp++) {
+        rcPresets[rp].addEventListener("click", function () {
+          var p = (this.getAttribute("data-rc-preset") || "").split(",");
+          if (p.length === 2) {
+            document.getElementById("rcR").value = p[0];
+            document.getElementById("rcC").value = p[1];
+            calcRcTimeAndCutoff();
+          }
+        });
+      }
+
+      /* مستمعات الحاسبة 4 */
+      var ledInputs = document.querySelectorAll(".led-input");
+      for (var li = 0; li < ledInputs.length; li++) ledInputs[li].addEventListener("input", calcLedResistor);
+      var ledColors = document.querySelectorAll(".led-color-btn");
+      for (var lc = 0; lc < ledColors.length; lc++) {
+        ledColors[lc].addEventListener("click", function () {
+          document.getElementById("ledVf").value = this.getAttribute("data-led-vf") || "2.0";
+          calcLedResistor();
+        });
+      }
+      var ledVsBtns = document.querySelectorAll(".led-vs-btn");
+      for (var lv = 0; lv < ledVsBtns.length; lv++) {
+        ledVsBtns[lv].addEventListener("click", function () {
+          document.getElementById("ledVs").value = this.getAttribute("data-led-vs") || "12";
+          calcLedResistor();
+        });
+      }
+
+      /* أزرار طلب صيانة عطل والاختيار السريع */
+      var triggers = document.querySelectorAll(".fault-trigger");
+      for (var ft = 0; ft < triggers.length; ft++) {
+        triggers[ft].addEventListener("click", function () {
+          openMaintenanceWithPreset(this.getAttribute("data-fault-preset") || "");
+        });
+      }
+      var quickFaults = document.querySelectorAll(".quick-fault-btn");
+      for (var qf = 0; qf < quickFaults.length; qf++) {
+        quickFaults[qf].addEventListener("click", function () {
+          openMaintenanceWithPreset(this.getAttribute("data-quick-fault") || "");
+        });
+      }
+
+      /* مزامنة حقول النموذج مع رسالة الواتساب */
+      var syncFields = document.querySelectorAll(".wa-sync-field");
+      for (var sf = 0; sf < syncFields.length; sf++) {
+        syncFields[sf].addEventListener("input", syncAllWhatsappLinks);
+        syncFields[sf].addEventListener("change", syncAllWhatsappLinks);
+      }
+
+      /* حفظ رقم الواتساب الخاص بالورشة */
+      var waInput = document.getElementById("workshopWaNumber");
+      var saveWaBtn = document.getElementById("saveWaNumberBtn");
+      var waStatus = document.getElementById("waNumberStatus");
+
+      function updateWaStatusLabel(text) {
+        syncAllWhatsappLinks();
+        if (waStatus) waStatus.textContent = text;
+      }
+
+      if (waInput) {
+        waInput.addEventListener("input", function () {
+          updateWaStatusLabel("الرقم الحالي لروابط واتساب: +" + getCleanWaNumber());
+        });
+      }
+      if (saveWaBtn) {
+        saveWaBtn.addEventListener("click", function () {
+          updateWaStatusLabel("تم حفظ رقم الواتساب بنجاح: +" + getCleanWaNumber());
+        });
+      }
+      updateWaStatusLabel("الرقم النشط لروابط واتساب: +" + getCleanWaNumber());
+
+      /* نسخ نص الرسالة */
+      var copyBtn = document.getElementById("copyWaMsgBtn");
+      var copyBox = document.getElementById("copyFeedbackBox");
+      if (copyBtn && copyBox) {
+        copyBtn.addEventListener("click", function () {
+          var txt = buildOrganizedWhatsappMessage();
+          var ok = false;
+          try {
+            var ta = document.createElement("textarea");
+            ta.value = txt;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+          } catch (err) {
+            ok = false;
+          }
+          copyBox.classList.remove("hidden");
+          copyBox.textContent = ok
+            ? "تم نسخ نص الرسالة إلى الحافظة."
+            : "يمكنك تحديد النص من المعاينة أعلاه ونسخه مباشرة.";
+        });
+      }
+
+      /* تأكيد البلاغ */
+      var form = document.getElementById("maintenanceForm");
+      var notice = document.getElementById("formSubmitNotice");
+      if (form && notice) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var nameVal = document.getElementById("clientName").value.trim();
+          var detailsVal = document.getElementById("faultDetails").value.trim();
+          syncAllWhatsappLinks();
+          notice.classList.remove("hidden");
+          if (!nameVal || !detailsVal) {
+            notice.textContent = "يرجى إدخال الاسم ووصف العطل أو المطلوب، وقد تم تحديث معاينة رسالة الواتساب.";
+            return;
+          }
+          notice.textContent = "تم تأكيد بلاغ «" + nameVal + "» لورشة إبداع (المنيا / المنيا الجديدة). يمكنك الضغط على «إرسال عبر واتساب» لفتح المحادثة مباشرة.";
+        });
+      }
+    });
+  </script>
+</body>
+</html>
